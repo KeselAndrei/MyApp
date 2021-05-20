@@ -9,12 +9,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         FactoryCarSingleton.printCars()
-        FactoryCarSingleton.car1.color = "purple"
-        FactoryCarSingleton.car2.number = "2222 AA-2"
-        FactoryCarSingleton.car3.number = "3333 AA-3"
-        FactoryCarSingleton.car4.color = "pink"
-        FactoryCarSingleton.car5.number = "5555 AA-5"
-        FactoryCarSingleton.car6.number = "6666 AA-6"
-        FactoryCarSingleton.printCars()
     }
 }
