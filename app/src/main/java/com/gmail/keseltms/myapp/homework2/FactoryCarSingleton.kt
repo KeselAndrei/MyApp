@@ -1,4 +1,4 @@
-package com.gmail.keseltms.myapp.Homework2
+package com.gmail.keseltms.myapp.homework2
 
 object FactoryCarSingleton {
 
