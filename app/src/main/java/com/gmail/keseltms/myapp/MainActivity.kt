@@ -2,9 +2,9 @@ package com.gmail.keseltms.myapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.gmail.keseltms.myapp.Homework2.FactoryCarSingleton
-import com.gmail.keseltms.myapp.Homework3.Dog
-import com.gmail.keseltms.myapp.Homework3.Elephant
+import com.gmail.keseltms.myapp.homework2.FactoryCarSingleton
+import com.gmail.keseltms.myapp.homework3.Dog
+import com.gmail.keseltms.myapp.homework3.Elephant
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

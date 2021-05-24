@@ -1,4 +1,4 @@
-package com.gmail.keseltms.myapp.Homework3
+package com.gmail.keseltms.myapp.homework3
 
 open class Animal(
     private var speed: Double
