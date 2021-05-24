@@ -5,10 +5,10 @@ open class Animal(
 ) {
 
     companion object {
-        const val DISTANCE: Int = 1080
+        const val DISTANCE_IN_METERS: Int = 1080
     }
 
     fun getTime(): Double {
-        return (DISTANCE / speed) / 3600
+        return (DISTANCE_IN_METERS / speed) / 3600
     }
 }
