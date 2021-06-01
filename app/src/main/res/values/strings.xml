@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyApp</string>
+    <string name="btn_homework_6">HOMEWORK 6</string>
+    <string name="btn_back">BACK</string>
+    <string name="flag_poland">Flag Poland</string>
+    <string name="flag_germany">Flag Germany</string>
+    <string name="flag_france">Flag France</string>
+    <string name="flag_latvia">Flag Latvia</string>
+    <string name="flag_finland">Flag Finland</string>
 </resources>
