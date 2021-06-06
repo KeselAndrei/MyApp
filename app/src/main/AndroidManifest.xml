@@ -17,5 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".homework7.Homework7InfoUserActivity" />
+        <activity android:name=".homework7.Homework7CheckUserActivity" />
     </application>
+
 </manifest>

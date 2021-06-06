@@ -1,10 +1,22 @@
 <resources>
     <string name="app_name">MyApp</string>
+    <string name="btn_exit">EXIT</string>
     <string name="btn_homework_6">HOMEWORK 6</string>
+    <string name="btn_homework_7">HOMEWORK 7</string>
+    <string name="btn_homework_7_start">START</string>
+    <string name="btn_homework_7_timer">Click START</string>
+    <string name="tv_homework_7_enter_name">Enter name</string>
+    <string name="tv_homework_7_enter_password">Enter password</string>
+    <string name="tv_homework_7_name">Name:</string>
+    <string name="tv_homework_7_password">Password:</string>
+    <string name="tv_homework_7_user_information">User information</string>
+    <string name="btn_homework_7_user_enter">ENTER</string>
+    <string name="btn_homework_7_password_invalid">"Invalid username or password"</string>
     <string name="btn_back">BACK</string>
     <string name="flag_poland">Flag Poland</string>
     <string name="flag_germany">Flag Germany</string>
     <string name="flag_france">Flag France</string>
     <string name="flag_latvia">Flag Latvia</string>
     <string name="flag_finland">Flag Finland</string>
+
 </resources>
