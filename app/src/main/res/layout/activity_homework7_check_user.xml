@@ -1,53 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="100dp"
-    android:gravity="bottom"
-    android:orientation="vertical"
+    android:layout_gravity="end"
     tools:context=".homework7.Homework7CheckUserActivity">
 
     <TextView
         android:id="@+id/tv_timer"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="@string/btn_homework_7_timer"
         android:textSize="20sp"
-        android:visibility="visible" />
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/edit_enter_name"
+        app:layout_constraintEnd_toEndOf="@+id/edit_enter_name"
+        app:layout_constraintStart_toStartOf="@+id/edit_enter_name" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/tv_enter_name"
-        android:layout_width="300dp"
+        android:id="@+id/edit_enter_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
         android:hint="@string/tv_homework_7_enter_name"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/edit_enter_password"
+        app:layout_constraintEnd_toEndOf="@+id/edit_enter_password"
+        app:layout_constraintStart_toStartOf="@+id/edit_enter_password" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/tv_enter_password"
+        android:id="@+id/edit_enter_password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
         android:hint="@string/tv_homework_7_enter_password"
         android:inputType="textPassword"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
         android:background="@color/purple_600"
         android:text="@string/btn_homework_7_start"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

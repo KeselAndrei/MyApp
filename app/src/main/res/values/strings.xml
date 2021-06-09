@@ -5,6 +5,7 @@
     <string name="btn_homework_7">HOMEWORK 7</string>
     <string name="btn_homework_7_start">START</string>
     <string name="btn_homework_7_timer">Click START</string>
+    <string name="btn_homework_7_close">CLOSE</string>
     <string name="tv_homework_7_enter_name">Enter name</string>
     <string name="tv_homework_7_enter_password">Enter password</string>
     <string name="tv_homework_7_name">Name:</string>

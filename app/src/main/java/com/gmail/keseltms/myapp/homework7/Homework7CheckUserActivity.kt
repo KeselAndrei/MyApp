@@ -2,61 +2,83 @@ package com.gmail.keseltms.myapp.homework7
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.gmail.keseltms.myapp.R
+import com.gmail.keseltms.myapp.databinding.ActivityHomework7CheckUserBinding
 
 @Suppress("DEPRECATION")
 class Homework7CheckUserActivity : AppCompatActivity() {
-    private lateinit var btnStart: Button
-    private lateinit var tvTimer: TextView
-    private lateinit var editEnterName: TextView
-    private lateinit var editEnterPassword: TextView
+    private lateinit var binding: ActivityHomework7CheckUserBinding
+    private var counter = 10
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_homework7_check_user)
-        btnStart = findViewById(R.id.btn_start)
-        tvTimer = findViewById(R.id.tv_timer)
-        editEnterName = findViewById(R.id.tv_enter_name)
-        editEnterPassword = findViewById(R.id.tv_enter_password)
-        btnStart.setOnClickListener {
-            btnStart.visibility = View.INVISIBLE
-            object : CountDownTimer(11000, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    tvTimer.textSize = 200f
-                    tvTimer.text = "${millisUntilFinished / 1000}"
+        binding = ActivityHomework7CheckUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        savedInstanceState?.let {
+            counter = it.getInt(COUNTER_KEY)
+        }
+        var count = 0
+        binding.btnStart.setOnClickListener {
+            when (counter) {
+                in 1..10 -> {
+                    binding.tvTimer.text = (counter - 1).toString()
+                    counter--
                 }
-
-                override fun onFinish() {
-                    tvTimer.visibility = View.GONE
-                    editEnterName.visibility = View.VISIBLE
-                    editEnterPassword.visibility = View.VISIBLE
-                    btnStart.text = getString(R.string.btn_homework_7_user_enter)
-                    btnStart.visibility = View.VISIBLE
-                }
-            }.start()
-            var count = 0
-            btnStart.setOnClickListener {
-                if (editEnterName.text.isEmpty() || editEnterPassword.text.isEmpty()) {
-                    if (count < 2) {
-                        tvTimer.setTextColor(resources.getColor(R.color.red))
-                        tvTimer.textSize = 20f
-                        tvTimer.text = getText(R.string.btn_homework_7_password_invalid)
-                        tvTimer.visibility = View.VISIBLE
-                        count += 1
-                    } else {
-                        startActivity(Intent(this, Homework7CheckUserActivity::class.java))
+                0 -> {
+                    binding.apply {
+                        tvTimer.visibility = View.GONE
+                        editEnterName.visibility = View.VISIBLE
+                        editEnterPassword.visibility = View.VISIBLE
+                        btnStart.apply {
+                            text = getString(R.string.btn_homework_7_user_enter)
+                            visibility = View.VISIBLE
+                            counter = -1
+                        }
                     }
-                } else {
-                    startActivity(Intent(this, Homework7InfoUserActivity::class.java).apply {
-                        putExtra("name", editEnterName.text.toString())
-                        putExtra("password", editEnterPassword.text.toString())
-                    })
+
+                }
+                else -> {
+                    if (binding.editEnterName.text!!.isEmpty() || binding.editEnterPassword.text!!.isEmpty()) {
+                        if (count < 2) {
+                            binding.tvTimer.apply {
+                                setTextColor(resources.getColor(R.color.red))
+                                textSize = 20f
+                                text = getText(R.string.btn_homework_7_password_invalid)
+                                visibility = View.VISIBLE
+                                count++
+                            }
+                        } else {
+                            startActivity(Intent(this, Homework7CheckUserActivity::class.java))
+                        }
+                    } else {
+                        startActivity(
+                            Intent(
+                                this,
+                                Homework7InfoUserActivity::class.java
+                            ).apply {
+                                putExtra(NAME, binding.editEnterName.text.toString())
+                                putExtra(PASSWORD, binding.editEnterPassword.text.toString())
+                            })
+                    }
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.tvTimer.text = counter.toString()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(COUNTER_KEY, counter)
+        super.onSaveInstanceState(outState)
+    }
+
+    companion object {
+        const val NAME = "name"
+        const val PASSWORD = "password"
+        const val COUNTER_KEY = "CounterKey"
     }
 }
