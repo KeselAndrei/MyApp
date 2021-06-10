@@ -10,6 +10,7 @@ import com.gmail.keseltms.myapp.databinding.ActivityHomework7CheckUserBinding
 @Suppress("DEPRECATION")
 class Homework7CheckUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomework7CheckUserBinding
+    private var isChek: Boolean = true
     private var counter = 10
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,25 +21,27 @@ class Homework7CheckUserActivity : AppCompatActivity() {
         }
         var count = 0
         binding.btnStart.setOnClickListener {
-            when (counter) {
-                in 1..10 -> {
-                    binding.tvTimer.text = (counter - 1).toString()
-                    counter--
-                }
-                0 -> {
-                    binding.apply {
-                        tvTimer.visibility = View.GONE
-                        editEnterName.visibility = View.VISIBLE
-                        editEnterPassword.visibility = View.VISIBLE
-                        btnStart.apply {
-                            text = getString(R.string.btn_homework_7_user_enter)
-                            visibility = View.VISIBLE
-                            counter = -1
-                        }
+            when (isChek) {
+                true -> when (counter) {
+                    in 1..10 -> {
+                        binding.tvTimer.text = (counter - 1).toString()
+                        counter--
                     }
+                    0 -> {
+                        binding.apply {
+                            tvTimer.visibility = View.GONE
+                            editEnterName.visibility = View.VISIBLE
+                            editEnterPassword.visibility = View.VISIBLE
+                            btnStart.apply {
+                                text = getString(R.string.btn_homework_7_user_enter)
+                                visibility = View.VISIBLE
+                                isChek = false
+                            }
+                        }
 
+                    }
                 }
-                else -> {
+                false -> {
                     if (binding.editEnterName.text!!.isEmpty() || binding.editEnterPassword.text!!.isEmpty()) {
                         if (count < 2) {
                             binding.tvTimer.apply {
