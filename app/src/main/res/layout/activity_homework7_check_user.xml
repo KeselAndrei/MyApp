@@ -5,54 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="end"
+    android:padding="8dp"
     tools:context=".homework7.Homework7CheckUserActivity">
 
     <TextView
         android:id="@+id/tv_timer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="@string/btn_homework_7_timer"
         android:textSize="20sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/edit_enter_name"
-        app:layout_constraintEnd_toEndOf="@+id/edit_enter_name"
-        app:layout_constraintStart_toStartOf="@+id/edit_enter_name" />
+        app:layout_constraintBottom_toTopOf="@+id/edit_enter_name_layout"
+        app:layout_constraintEnd_toEndOf="@+id/edit_enter_name_layout"
+        app:layout_constraintStart_toStartOf="@+id/edit_enter_name_layout" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_enter_name"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_enter_name_layout"
+        style="@style/MyTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
+        android:layout_marginBottom="16dp"
         android:hint="@string/tv_homework_7_enter_name"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/edit_enter_password"
-        app:layout_constraintEnd_toEndOf="@+id/edit_enter_password"
-        app:layout_constraintStart_toStartOf="@+id/edit_enter_password" />
+        app:boxStrokeColor="@color/purple_600"
+        app:layout_constraintBottom_toTopOf="@+id/edit_enter_password_layout"
+        app:layout_constraintEnd_toEndOf="@+id/edit_enter_password_layout"
+        app:layout_constraintStart_toStartOf="@+id/edit_enter_password_layout">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_enter_password"
-        android:layout_width="300dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_enter_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_enter_password_layout"
+        style="@style/MyTextStyle"
+        android:layout_width="245dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
+        android:layout_marginBottom="16dp"
         android:hint="@string/tv_homework_7_enter_password"
-        android:inputType="textPassword"
         android:visibility="invisible"
+        app:boxStrokeColor="@color/purple_600"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_enter_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
+        style="@style/MyButtonStyle"
+        android:layout_width="245dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:background="@color/purple_600"
+        android:layout_marginBottom="24dp"
         android:text="@string/btn_homework_7_start"
-        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:icon="@drawable/ic_baseline_exposure_neg_1_24"
+        app:iconGravity="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

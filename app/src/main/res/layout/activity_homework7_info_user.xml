@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".homework7.Homework7InfoUserActivity">
 
 
@@ -11,9 +12,9 @@
         android:id="@+id/tv_user_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="@string/tv_homework_7_user_information"
-        android:textSize="30sp"
+        android:textColor="@color/purple_600"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,10 +23,11 @@
         android:id="@+id/tv_name_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/tv_homework_7_name"
-        android:textSize="20sp"
+        android:textColorHint="@color/purple_600"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_password_extras"
         app:layout_constraintStart_toEndOf="@+id/iv_profile" />
 
@@ -34,29 +36,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/tv_homework_7_password"
-        android:textSize="20sp"
+        android:textColorHint="@color/purple_600"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
         app:layout_constraintStart_toStartOf="@+id/tv_name_info" />
 
     <ImageView
         android:id="@+id/iv_profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="15dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_baseline_language_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_user_info"
         tools:ignore="ContentDescription" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_close"
+        style="@style/MyButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/btn_homework_7_close"
-        app:layout_constraintEnd_toEndOf="@+id/tv_password_extras"
+        android:textSize="20sp"
+        app:icon="@drawable/ic_baseline_emoji_emotions_24"
+        app:iconGravity="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/iv_profile"
         app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
