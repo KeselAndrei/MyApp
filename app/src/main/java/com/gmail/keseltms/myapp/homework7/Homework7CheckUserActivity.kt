@@ -23,16 +23,8 @@ class Homework7CheckUserActivity : AppCompatActivity() {
         }
 
         binding.btnStart.setOnClickListener {
-            when (isChek) {
-                true -> {
-                    startTimer()
-                }
-
-                false -> {
-                    enterNameAndPassword()
-                }
-
-            }
+            if (isChek) startTimer()
+            else enterNameAndPassword()
         }
     }
 
@@ -69,7 +61,7 @@ class Homework7CheckUserActivity : AppCompatActivity() {
                     editEnterNameLayout.visibility = View.VISIBLE
                     editEnterPasswordLayout.visibility = View.VISIBLE
                     btnStart.apply {
-                        text = getString(R.string.btn_homework_7_user_enter)
+                        text = getString(R.string.homework_7_user_enter)
                         visibility = View.VISIBLE
                         icon = resources.getDrawable(R.drawable.ic_baseline_how_to_reg_24)
                         isChek = false
@@ -86,7 +78,7 @@ class Homework7CheckUserActivity : AppCompatActivity() {
                 binding.tvTimer.apply {
                     setTextColor(resources.getColor(R.color.red))
                     textSize = 20f
-                    text = getText(R.string.btn_homework_7_password_invalid)
+                    text = getText(R.string.homework_7_password_invalid)
                     visibility = View.VISIBLE
                     countInvalidClick++
                 }

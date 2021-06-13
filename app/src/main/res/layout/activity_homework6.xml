@@ -174,7 +174,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@color/purple_200"
-            android:text="@string/btn_back"
+            android:text="@string/back"
             android:textColor="@color/white" />
 
     </LinearLayout>

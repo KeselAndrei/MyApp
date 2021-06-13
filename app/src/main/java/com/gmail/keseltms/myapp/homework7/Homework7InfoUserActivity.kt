@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.gmail.keseltms.myapp.databinding.ActivityHomework7InfoUserBinding
 import com.gmail.keseltms.myapp.homework7.Homework7CheckUserActivity.Companion.NAME
 import com.gmail.keseltms.myapp.homework7.Homework7CheckUserActivity.Companion.PASSWORD
-import kotlin.system.exitProcess
 
 class Homework7InfoUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomework7InfoUserBinding
@@ -32,7 +31,6 @@ class Homework7InfoUserActivity : AppCompatActivity() {
 
         binding.btnClose.setOnClickListener {
             finish()
-            exitProcess(0)
         }
     }
 }

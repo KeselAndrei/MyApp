@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:backgroundTint="@color/purple_600"
-            android:text="@string/btn_homework_6"
+            android:text="@string/homework_6"
             android:textColor="@color/white"
             android:textSize="22sp" />
 
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:backgroundTint="@color/purple_600"
-            android:text="@string/btn_homework_7"
+            android:text="@string/homework_7"
             android:textColor="@color/white"
             android:textSize="22sp" />
 
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:backgroundTint="@color/purple_600"
-            android:text="@string/btn_exit"
+            android:text="@string/exit"
             android:textColor="@color/white"
             android:textSize="22sp" />
     </LinearLayout>
