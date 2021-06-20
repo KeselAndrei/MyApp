@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gmail.keseltms.myapp">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp">
+        <activity android:name=".homework10.CandyActivity"></activity>
+        <activity android:name=".homework10.MainActivity1111" />
+        <activity android:name=".homework10.MainActivity1" />
         <activity android:name=".homework6.Homework6Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
