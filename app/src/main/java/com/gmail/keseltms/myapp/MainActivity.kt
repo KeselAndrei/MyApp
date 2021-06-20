@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.gmail.keseltms.myapp.databinding.ActivityMainBinding
 import com.gmail.keseltms.myapp.homework6.Homework6Activity
 import com.gmail.keseltms.myapp.homework7.Homework7CheckUserActivity
+import com.gmail.keseltms.myapp.homework10.CandyActivity
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnHomework7.setOnClickListener {
             startActivity(Intent(this, Homework7CheckUserActivity::class.java))
+        }
+        binding.btnHomework10.setOnClickListener {
+            startActivity(Intent(this, CandyActivity::class.java))
         }
         binding.btnExit.setOnClickListener {
             this.finish()
