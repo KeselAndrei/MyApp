@@ -4,14 +4,14 @@ import kotlin.random.Random
 
 object FactoryCandy {
 
-    private lateinit var listCandy: MutableList<Candy>
     private const val BRAND_SNICKERS = "Snickers"
     private const val BRAND_MARS = "Mars"
     private const val BRAND_TWIX = "Twix"
+    private const val SIZE_CANDY = 300
 
     fun candyMaking(): MutableList<Candy> {
-        listCandy = mutableListOf()
-        for (i in 0..300) {
+        val listCandy: MutableList<Candy> = mutableListOf()
+        for (i in 0..SIZE_CANDY) {
             when (i) {
                 in 0..99 -> {
                     listCandy.add(
