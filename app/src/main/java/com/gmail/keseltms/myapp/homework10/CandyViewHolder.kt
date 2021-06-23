@@ -1,15 +1,38 @@
 package com.gmail.keseltms.myapp.homework10
 
-import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.gmail.keseltms.myapp.R
+import com.bumptech.glide.Glide
+import com.gmail.keseltms.myapp.databinding.ItemCandyBinding
 
-class CandyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val tvBrand: TextView = itemView.findViewById(R.id.tv_brand)
-    private val tvBarcodeNumber: TextView = itemView.findViewById(R.id.tv_barcode_number)
+class CandyViewHolder(
+    private val bindingView: ItemCandyBinding
+) : RecyclerView.ViewHolder(bindingView.root) {
+
     fun bind(item: Candy) {
-        tvBrand.text = item.brand
-        tvBarcodeNumber.text = item.barcodeNumber.toString()
+        bindingView.tvBrand.text = item.brand
+        bindingView.tvBarcodeNumber.text = item.barcodeNumber.toString()
+        Glide
+            .with(bindingView.root)
+            .load(
+                getURL()
+            )
+            .into(bindingView.ivCandy)
+    }
+
+    private fun getURL(): String {
+        return when (bindingView.tvBrand.text) {
+            FactoryCandy.BRAND_MARS -> URL_MARS
+            FactoryCandy.BRAND_SNICKERS -> URL_SNICKERS
+            else -> URL_TWIX
+        }
+    }
+
+    companion object {
+        const val URL_MARS =
+            "https://company.unipack.ru/light_editor_img/images/2012-5-12/file1336810083.jpg"
+        const val URL_SNICKERS =
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNv-WEXnaw0qwZPO9AIjXLcNInRERfh8qfNKHLV_RE9Z23MByhOar5DMoxhiEE9LvPBQ&usqp=CAU"
+        const val URL_TWIX =
+            "https://storage.googleapis.com/multi-static-content/previews/artage-io-thumb-1120d7581b31dad1e62477a0fef35472.png"
     }
 }

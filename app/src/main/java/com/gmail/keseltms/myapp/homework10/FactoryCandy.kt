@@ -4,8 +4,8 @@ import kotlin.random.Random
 
 object FactoryCandy {
 
-    private const val BRAND_SNICKERS = "Snickers"
-    private const val BRAND_MARS = "Mars"
+    const val BRAND_SNICKERS = "Snickers"
+    const val BRAND_MARS = "Mars"
     private const val BRAND_TWIX = "Twix"
     private const val SIZE_CANDY = 300
 
