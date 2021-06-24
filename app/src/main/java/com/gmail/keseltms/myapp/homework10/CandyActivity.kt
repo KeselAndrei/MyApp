@@ -25,11 +25,8 @@ class CandyActivity : AppCompatActivity() {
             adapter = candyAdapter
         }
 
-        candyViewModel.apply {
-            getCandyFromFactory()
-            liveData.observe(this@CandyActivity, {
-                candyAdapter.update(it)
-            })
-        }
+        candyViewModel.liveData.observe(this@CandyActivity, {
+            candyAdapter.update(it)
+        })
     }
 }
