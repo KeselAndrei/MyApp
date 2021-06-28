@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gmail.keseltms.myapp.databinding.ActivityCandyBinding
 
 class CandyActivity : AppCompatActivity() {
-
-    private var list: MutableList<Candy> = mutableListOf()
     private lateinit var binding: ActivityCandyBinding
     private val candyViewModel: CandyViewModel by viewModels()
 
@@ -17,7 +15,7 @@ class CandyActivity : AppCompatActivity() {
         binding = ActivityCandyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val candyAdapter = CandyAdapter(list)
+        val candyAdapter = CandyAdapter()
         with(binding.rvCandy) {
             layoutManager = LinearLayoutManager(
                 this@CandyActivity, LinearLayoutManager.VERTICAL, false

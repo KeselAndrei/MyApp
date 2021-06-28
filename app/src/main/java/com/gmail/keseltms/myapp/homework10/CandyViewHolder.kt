@@ -14,13 +14,13 @@ class CandyViewHolder(
         Glide
             .with(bindingView.root)
             .load(
-                getURL()
+                getURL(item)
             )
             .into(bindingView.ivCandy)
     }
 
-    private fun getURL(): String {
-        return when (bindingView.tvBrand.text) {
+    private fun getURL(candy:Candy): String {
+        return when (candy.brand) {
             FactoryCandy.BRAND_MARS -> URL_MARS
             FactoryCandy.BRAND_SNICKERS -> URL_SNICKERS
             else -> URL_TWIX

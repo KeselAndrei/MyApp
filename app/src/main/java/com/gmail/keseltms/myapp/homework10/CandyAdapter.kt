@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gmail.keseltms.myapp.databinding.ItemCandyBinding
 
 class CandyAdapter(
-    private val candyList: MutableList<Candy>
+    private val candyList: MutableList<Candy> = mutableListOf()
 ) : RecyclerView.Adapter<CandyViewHolder>() {
 
     override fun getItemCount(): Int = candyList.size
