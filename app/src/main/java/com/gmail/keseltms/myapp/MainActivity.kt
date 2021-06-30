@@ -9,6 +9,7 @@ import com.gmail.keseltms.myapp.homework6.Homework6Activity
 import com.gmail.keseltms.myapp.homework7.Homework7CheckUserActivity
 import com.gmail.keseltms.myapp.homework10.CandyActivity
 import com.gmail.keseltms.myapp.homework12.HomeworkFragmentActivity
+import com.gmail.keseltms.myapp.homework13.CandyStoreActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             btnHomework7.setOnClickListener(clickListener)
             btnHomework10.setOnClickListener(clickListener)
             btnHomework12.setOnClickListener(clickListener)
+            btnHomework13.setOnClickListener(clickListener)
             btnExit.setOnClickListener(clickListener)
         }
     }
@@ -38,6 +40,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_homework12 -> {
                 startActivity(Intent(this, HomeworkFragmentActivity::class.java))
+            }
+            R.id.btn_homework13 -> {
+                startActivity(Intent(this, CandyStoreActivity::class.java))
             }
             R.id.btn_exit -> {
                 this.finish()
