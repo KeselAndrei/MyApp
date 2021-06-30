@@ -2,9 +2,11 @@ package com.gmail.keseltms.myapp.homework13
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import com.gmail.keseltms.myapp.databinding.ActivityCandyStoreBinding
+import com.gmail.keseltms.myapp.homework10.Candy
 
-class CandyStoreActivity : AppCompatActivity() {
+class CandyStoreActivity() : AppCompatActivity() {
 
     private lateinit var binding: ActivityCandyStoreBinding
 
@@ -16,7 +18,7 @@ class CandyStoreActivity : AppCompatActivity() {
         val fragmentBarcode = supportFragmentManager.findFragmentByTag(
             BarcodeCandyFragment.TAG_BARCODE_CANDY_FRAGMENT
         )
-            ?: BarcodeCandyFragment(::barcodeClickListener) //
+            ?: BarcodeCandyFragment()
 
         supportFragmentManager.beginTransaction()
             .replace(
@@ -24,22 +26,17 @@ class CandyStoreActivity : AppCompatActivity() {
                 fragmentBarcode,
                 BarcodeCandyFragment.TAG_BARCODE_CANDY_FRAGMENT
             )
-            .addToBackStack(null)
             .commit()
     }
 
-    private fun barcodeClickListener() {
-
-        val fragmentInfo = supportFragmentManager.findFragmentByTag(
-            InfoCandyFragment.TAG_INFO_CANDY_FRAGMENT
-        )
-            ?: InfoCandyFragment()
-
+     fun barcodeClickListener(candy:Candy) {
+        val fragmentInfo = InfoCandyFragment().apply {
+            arguments = bundleOf("Key" to candy)
+        }
         supportFragmentManager.beginTransaction()
             .replace(
                 binding.fragmentContainerView.id,
-                fragmentInfo,
-                InfoCandyFragment.TAG_INFO_CANDY_FRAGMENT
+                fragmentInfo
             )
             .commit()
     }

@@ -1,7 +1,6 @@
 package com.gmail.keseltms.myapp.homework13
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import com.gmail.keseltms.myapp.homework10.Candy
 class InfoCandyFragment : Fragment() {
 
     private var binding: FragmentInfoCandyBinding? = null
-//    private val infoViewModel: InfoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,20 +24,18 @@ class InfoCandyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val arg: Bundle? = arguments
-        val brand = arg?.getSerializable(BarcodeViewHolder.BRAND) as Candy
-        binding?.tvBrand?.text = brand.brand
-        Log.e("KEK", "barcodeClickListener")
+        val info = savedInstanceState?.getParcelable<Candy>("Key")
+        binding?.tvBrand?.text = info?.brand
         Glide
             .with(binding!!.root)
             .load(
-                getURL(brand),
+                getURL(info),
             )
             .into(binding!!.ivCandy)
     }
 
-    private fun getURL(brand:Candy): String {
-        return when (brand.brand) {
+    private fun getURL(brand: Candy?): String {
+        return when (brand?.brand) {
             FactoryCandy.BRAND_MARS -> URL_MARS
             FactoryCandy.BRAND_SNICKERS -> URL_SNICKERS
             else -> URL_TWIX
@@ -52,7 +48,6 @@ class InfoCandyFragment : Fragment() {
     }
 
     companion object {
-        const val TAG_INFO_CANDY_FRAGMENT = "TAG INFO CANDY FRAGMENT"
         const val URL_MARS =
             "https://company.unipack.ru/light_editor_img/images/2012-5-12/file1336810083.jpg"
         const val URL_SNICKERS =

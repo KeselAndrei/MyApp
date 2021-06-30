@@ -7,8 +7,10 @@ import com.gmail.keseltms.myapp.databinding.ItemBarcodeBinding
 import com.gmail.keseltms.myapp.homework10.Candy
 
 class BarcodeAdapter(
-    private val barcodeClickListener: () -> Unit,
-    private val barcodeList: MutableList<Candy> = mutableListOf()
+
+    private val barcodeList: MutableList<Candy> = mutableListOf(),
+    private val barcodeClickListener: (Candy) -> Unit
+
 ) : RecyclerView.Adapter<BarcodeViewHolder>() {
 
     override fun getItemCount(): Int = barcodeList.size
@@ -18,8 +20,7 @@ class BarcodeAdapter(
             ItemBarcodeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent, false
-            ),
-            barcodeClickListener
+            )
         )
 
     override fun onBindViewHolder(holder: BarcodeViewHolder, position: Int) {

@@ -9,9 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gmail.keseltms.myapp.databinding.FragmentBarcodeCandyBinding
 
-class BarcodeCandyFragment(
-    private val barcodeClickListener: () -> Unit
-) : Fragment() {
+class BarcodeCandyFragment : Fragment() {
+    private val barcodeAdapter = BarcodeAdapter{
+        (activity as? CandyStoreActivity)?.barcodeClickListener(it)
+    }
 
     private var binding: FragmentBarcodeCandyBinding? = null
     private val barcodeViewModel: BarcodeViewModel by viewModels()
@@ -26,8 +27,6 @@ class BarcodeCandyFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val barcodeAdapter = BarcodeAdapter(barcodeClickListener)
-
         with(binding!!.rvBarcode) {
             layoutManager = LinearLayoutManager(
                 view.context, LinearLayoutManager.VERTICAL, false
@@ -38,6 +37,7 @@ class BarcodeCandyFragment(
         barcodeViewModel.liveData.observe(viewLifecycleOwner, {
             barcodeAdapter.update(it)
         })
+
     }
 
     override fun onDestroyView() {
