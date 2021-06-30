@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gmail.keseltms.myapp.databinding.FragmentBarcodeCandyBinding
 
 class BarcodeCandyFragment : Fragment() {
-    private val barcodeAdapter = BarcodeAdapter{
+    private val barcodeAdapter = BarcodeAdapter {
         (activity as? CandyStoreActivity)?.barcodeClickListener(it)
     }
 
@@ -46,6 +46,6 @@ class BarcodeCandyFragment : Fragment() {
     }
 
     companion object {
-        const val TAG_BARCODE_CANDY_FRAGMENT = "BARCODE_CANDY_FRAGMENT"
+        const val TAG = "TAG"
     }
 }

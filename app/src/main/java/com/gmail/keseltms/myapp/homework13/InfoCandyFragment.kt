@@ -24,8 +24,9 @@ class InfoCandyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val info = savedInstanceState?.getParcelable<Candy>("Key")
+        val info = arguments?.getParcelable<Candy>("Key")
         binding?.tvBrand?.text = info?.brand
+        binding?.tvBarcodeNumber?.text = info?.barcodeNumber.toString()
         Glide
             .with(binding!!.root)
             .load(
@@ -48,6 +49,7 @@ class InfoCandyFragment : Fragment() {
     }
 
     companion object {
+        const val TAG = "TAG"
         const val URL_MARS =
             "https://company.unipack.ru/light_editor_img/images/2012-5-12/file1336810083.jpg"
         const val URL_SNICKERS =

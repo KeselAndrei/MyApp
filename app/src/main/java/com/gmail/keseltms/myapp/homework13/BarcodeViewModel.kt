@@ -15,5 +15,6 @@ class BarcodeViewModel : ViewModel() {
 
     private fun getBarcodeFromCandyFactory() {
         liveData.value = FactoryCandy.candyMaking()
+
     }
 }

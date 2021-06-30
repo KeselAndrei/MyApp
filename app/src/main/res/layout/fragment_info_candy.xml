@@ -43,5 +43,4 @@
         app:layout_constraintStart_toEndOf="@id/iv_candy"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Barcode number" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

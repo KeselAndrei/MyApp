@@ -6,7 +6,7 @@ import androidx.core.os.bundleOf
 import com.gmail.keseltms.myapp.databinding.ActivityCandyStoreBinding
 import com.gmail.keseltms.myapp.homework10.Candy
 
-class CandyStoreActivity() : AppCompatActivity() {
+class CandyStoreActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCandyStoreBinding
 
@@ -15,29 +15,39 @@ class CandyStoreActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val fragmentBarcode = supportFragmentManager.findFragmentByTag(
-            BarcodeCandyFragment.TAG_BARCODE_CANDY_FRAGMENT
-        )
-            ?: BarcodeCandyFragment()
+        val fragment = supportFragmentManager.findFragmentByTag(
+            InfoCandyFragment.TAG
+        ) ?: supportFragmentManager.findFragmentByTag(BarcodeCandyFragment.TAG)
 
-        supportFragmentManager.beginTransaction()
-            .replace(
-                binding.fragmentContainerView.id,
-                fragmentBarcode,
-                BarcodeCandyFragment.TAG_BARCODE_CANDY_FRAGMENT
-            )
-            .commit()
+        if (fragment != null) {
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    binding.fragmentContainerView.id,
+                    fragment
+                )
+                .commit()
+        } else {
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    binding.fragmentContainerView.id,
+                    BarcodeCandyFragment(),
+                    BarcodeCandyFragment.TAG
+                )
+                .commit()
+        }
     }
 
-     fun barcodeClickListener(candy:Candy) {
+    fun barcodeClickListener(candy: Candy) {
         val fragmentInfo = InfoCandyFragment().apply {
             arguments = bundleOf("Key" to candy)
         }
         supportFragmentManager.beginTransaction()
             .replace(
                 binding.fragmentContainerView.id,
-                fragmentInfo
+                fragmentInfo,
+                InfoCandyFragment.TAG
             )
+            .addToBackStack(InfoCandyFragment.TAG)
             .commit()
     }
 }

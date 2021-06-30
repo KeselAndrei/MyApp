@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class Candy(
+class Candy (
     val brand: String,
     val barcodeNumber: Long
 ) : Parcelable

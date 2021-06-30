@@ -20,7 +20,8 @@ class BarcodeAdapter(
             ItemBarcodeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent, false
-            )
+            ),
+            barcodeClickListener
         )
 
     override fun onBindViewHolder(holder: BarcodeViewHolder, position: Int) {

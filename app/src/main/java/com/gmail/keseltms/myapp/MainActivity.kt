@@ -47,9 +47,6 @@ class MainActivity : AppCompatActivity() {
             R.id.btn_exit -> {
                 this.finish()
             }
-            else -> {
-
-            }
         }
     }
 }
