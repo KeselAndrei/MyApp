@@ -17,11 +17,11 @@ class HomeworkFragmentActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnNext.setOnClickListener {
-            replaceFragment()
+            getFragment()
         }
     }
 
-    private fun getFragment(fragment: Fragment) {
+    private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             replace(R.id.fragment_container_view, fragment)
@@ -29,27 +29,27 @@ class HomeworkFragmentActivity : AppCompatActivity() {
     }
 
     private var counter = 1
-    private fun replaceFragment() {
+    private fun getFragment() {
 
         when (counter) {
             1 -> {
-                getFragment(FirstFragment())
+                replaceFragment(FirstFragment())
                 counter++
             }
             2 -> {
-                getFragment(SecondFragment())
+                replaceFragment(SecondFragment())
                 counter++
             }
             3 -> {
-                getFragment(ThirdFragment())
+                replaceFragment(ThirdFragment())
                 counter++
             }
             4 -> {
-                getFragment(ForthFragment())
+                replaceFragment(ForthFragment())
                 counter++
             }
             5 -> {
-                getFragment(FifthFragment())
+                replaceFragment(FifthFragment())
                 counter = 1
             }
         }

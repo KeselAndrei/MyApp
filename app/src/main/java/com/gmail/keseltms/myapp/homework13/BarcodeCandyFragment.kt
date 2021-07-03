@@ -46,6 +46,6 @@ class BarcodeCandyFragment : Fragment() {
     }
 
     companion object {
-        const val TAG = "TAG"
+        const val TAG = "BARCODE_CANDY_FRAGMENT"
     }
 }
