@@ -1,13 +1,14 @@
 package com.gmail.keseltms.myapp.homework13
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
+import com.gmail.keseltms.myapp.R
 import com.gmail.keseltms.myapp.databinding.ActivityCandyStoreBinding
 import com.gmail.keseltms.myapp.homework10.Candy
-import com.gmail.keseltms.myapp.homework13.SharedPrefsKeys.PREFS_MESSAGE_BRAND_KEY
 import com.gmail.keseltms.myapp.homework13.SharedPrefsKeys.PREFS_MESSAGE_BARCODE_KEY
+import com.gmail.keseltms.myapp.homework13.SharedPrefsKeys.PREFS_MESSAGE_BRAND_KEY
 
 class CandyStoreActivity : AppCompatActivity() {
 
@@ -24,7 +25,12 @@ class CandyStoreActivity : AppCompatActivity() {
 
         val toast = Toast.makeText(
             applicationContext,
-            "Бренд конфеты: $messageBrand\n Штрихкод конфеты: $messageBarcode", Toast.LENGTH_LONG
+            String.format(
+                getString(R.string.candy_info),
+                messageBrand + "\n",
+                messageBarcode
+            ),
+            Toast.LENGTH_LONG
         )
         toast.show()
 
