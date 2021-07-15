@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         tools:ignore="ExtraText">
-        <activity android:name=".homework16.MessengerActivity"/>
+        <activity android:name=".homework17.CurrencyActivity"></activity>
+        <activity android:name=".homework16.MessengerActivity" />
         <activity android:name=".homework13.CandyStoreActivity" />
         <activity android:name=".homework12.HomeworkFragmentActivity" />
         <activity android:name=".homework10.CandyActivity" />

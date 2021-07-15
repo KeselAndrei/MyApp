@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gmail.keseltms.myapp.R
 import com.gmail.keseltms.myapp.databinding.ActivityMessengerBinding
 import com.gmail.keseltms.myapp.homework13.MySuperApp
 import java.util.*
@@ -44,7 +45,9 @@ class MessengerActivity : AppCompatActivity() {
             )
             adapter = messageAdapter
 
-            addItemDecoration((DividerItemDecoration(context, LinearLayoutManager.VERTICAL)))
+            addItemDecoration((DividerItemDecoration(context, LinearLayoutManager.VERTICAL)).apply {
+                getDrawable(R.drawable.my_drawable)?.let { setDrawable(it) }
+            })
         }
 
         messageViewModel.liveData.observe(this, {

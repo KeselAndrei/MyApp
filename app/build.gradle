@@ -23,8 +23,16 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String","API_KEY", '"X-CMC_PRO_API_KEY: d45c71f6-cb98-4cc8-8dce-bbf98696ab0b"'
+            buildConfigField "String","BASE_URL", '"https://pro-api.coinmarketcap.com/"'
+        }
+
+        debug{
+            buildConfigField "String","API_KEY", '"X-CMC_PRO_API_KEY: d45c71f6-cb98-4cc8-8dce-bbf98696ab0b"'
+            buildConfigField "String","BASE_URL", '"https://pro-api.coinmarketcap.com/"'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -56,4 +64,9 @@ dependencies {
     implementation "androidx.room:room-ktx:2.3.0"
     kapt "androidx.room:room-compiler:2.3.0"
     implementation "androidx.room:room-runtime:2.3.0"
+
+    implementation "com.squareup.retrofit2:retrofit:2.9.0" //Retrofit для REST API
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1' //Для ретрофита, чтобы преобразовывать Json -> Объект
+    implementation "com.google.code.gson:gson:2.8.7" //чтобы преобразовывать Json -> Объект
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.1" //для логов в ретрофите
 }
