@@ -2,22 +2,18 @@ package com.gmail.keseltms.myapp.homework17
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gmail.keseltms.myapp.R
 import com.gmail.keseltms.myapp.databinding.ActivityCurrencyBinding
-import com.gmail.keseltms.myapp.homework13.MySuperApp
 import com.gmail.keseltms.myapp.homework17.restCurrency.models.CurrencyViewModel
-import com.gmail.keseltms.myapp.homework17.restCurrency.models.CurrentViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CurrencyActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCurrencyBinding
 
-    private val viewModel: CurrencyViewModel by viewModels {
-        CurrentViewModelFactory((application as MySuperApp).currencyRepository)
-    }
+    private val viewModel: CurrencyViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCurrencyBinding.inflate(layoutInflater)
