@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gmail.keseltms.myapp.R
 import com.gmail.keseltms.myapp.databinding.ActivityMessengerBinding
-import com.gmail.keseltms.myapp.homework13.MySuperApp
+import com.gmail.keseltms.myapp.MySuperApp
 import java.util.*
 
 class MessengerActivity : AppCompatActivity() {
