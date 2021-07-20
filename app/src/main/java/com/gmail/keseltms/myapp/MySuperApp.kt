@@ -43,7 +43,7 @@ class MySuperApp : Application() {
     }
 
     private val viewModels = module {
-        viewModel { CurrencyViewModel() }
+        viewModel { CurrencyViewModel(get()) }
     }
 
     private val currencyRepository = module {
@@ -51,6 +51,6 @@ class MySuperApp : Application() {
     }
 
     private val currencyApi = module {
-        factory { CurrencyApi.get() }
+        single { CurrencyApi.get() }
     }
 }

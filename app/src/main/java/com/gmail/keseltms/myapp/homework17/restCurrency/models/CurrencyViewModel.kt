@@ -10,13 +10,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 @KoinApiExtension
-class CurrencyViewModel : ViewModel(), KoinComponent {
-
-    private val currencyRepository: CurrencyRepository by inject()
-
+class CurrencyViewModel(
+    private val currencyRepository: CurrencyRepository
+) : ViewModel(), KoinComponent {
 
     val liveData: MutableLiveData<List<Currency>> = MutableLiveData()
 

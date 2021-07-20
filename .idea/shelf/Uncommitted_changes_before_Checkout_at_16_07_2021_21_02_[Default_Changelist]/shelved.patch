@@ -1,0 +1,63 @@
+Index: app/src/main/java/com/gmail/keseltms/myapp/MySuperApp.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.gmail.keseltms.myapp.homework13\r\n\r\nimport android.app.Application\r\nimport androidx.room.Room\r\nimport com.gmail.keseltms.myapp.homework16.MessageDao\r\nimport com.gmail.keseltms.myapp.homework16.MessageDatabase\r\nimport com.gmail.keseltms.myapp.homework17.restCurrency.restApi.CurrencyRepository\r\nimport com.gmail.keseltms.myapp.homework17.restCurrency.restApi.CurrencyService\r\n\r\nclass MySuperApp : Application() {\r\n\r\n    val currencyRepository: CurrencyRepository by lazy {\r\n        CurrencyRepository(CurrencyService.getCurrencyService())\r\n    }\r\n\r\n    private val messageDatabase: MessageDatabase by lazy {\r\n        Room.databaseBuilder(\r\n            applicationContext, MessageDatabase::class.java, \"table_message\"\r\n        ).build()\r\n    }\r\n\r\n    val messageDao: MessageDao by lazy {\r\n        messageDatabase.messageDao()\r\n    }\r\n\r\n    override fun onCreate() {\r\n        super.onCreate()\r\n\r\n        SharedPreferencesUtils.sharedPrefs = applicationContext.getSharedPreferences(\r\n            SharedPrefsKeys.PREFS_KEY,\r\n            MODE_PRIVATE\r\n        )\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/gmail/keseltms/myapp/MySuperApp.kt	(revision 8a290803640256263ffe94cc8307066b6056fb2f)
++++ app/src/main/java/com/gmail/keseltms/myapp/MySuperApp.kt	(date 1626458544424)
+@@ -1,18 +1,23 @@
+-package com.gmail.keseltms.myapp.homework13
++package com.gmail.keseltms.myapp
+ 
+ import android.app.Application
+ import androidx.room.Room
++import com.gmail.keseltms.myapp.homework13.SharedPreferencesUtils
++import com.gmail.keseltms.myapp.homework13.SharedPrefsKeys
+ import com.gmail.keseltms.myapp.homework16.MessageDao
+ import com.gmail.keseltms.myapp.homework16.MessageDatabase
++import com.gmail.keseltms.myapp.homework17.restCurrency.models.CurrencyViewModel
++import com.gmail.keseltms.myapp.homework17.restCurrency.restApi.CurrencyApi
+ import com.gmail.keseltms.myapp.homework17.restCurrency.restApi.CurrencyRepository
+-import com.gmail.keseltms.myapp.homework17.restCurrency.restApi.CurrencyService
++import org.koin.android.ext.koin.androidContext
++import org.koin.androidx.viewmodel.dsl.viewModel
++import org.koin.core.component.KoinApiExtension
++import org.koin.core.context.startKoin
++import org.koin.dsl.module
+ 
++@KoinApiExtension
+ class MySuperApp : Application() {
+ 
+-    val currencyRepository: CurrencyRepository by lazy {
+-        CurrencyRepository(CurrencyService.getCurrencyService())
+-    }
+-
+     private val messageDatabase: MessageDatabase by lazy {
+         Room.databaseBuilder(
+             applicationContext, MessageDatabase::class.java, "table_message"
+@@ -30,5 +35,22 @@
+             SharedPrefsKeys.PREFS_KEY,
+             MODE_PRIVATE
+         )
++
++        startKoin {
++            androidContext(this@MySuperApp)
++            modules(listOf(viewModels, currencyRepository, currencyApi))
++        }
++    }
++
++    private val viewModels = module {
++        viewModel { CurrencyViewModel() }
++    }
++
++    private val currencyRepository = module {
++        factory { CurrencyRepository(get()) }
++    }
++
++    private val currencyApi = module {
++        factory { CurrencyApi.get() }
+     }
+ }
+\ No newline at end of file

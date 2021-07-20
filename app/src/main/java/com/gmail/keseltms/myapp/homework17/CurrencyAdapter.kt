@@ -2,15 +2,12 @@ package com.gmail.keseltms.myapp.homework17
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.gmail.keseltms.myapp.databinding.ItemCurrencyBinding
 import com.gmail.keseltms.myapp.homework17.restCurrency.data.Currency
 
-class CurrencyAdapter(
-    private val currencyList: MutableList<Currency> = mutableListOf(),
-) : RecyclerView.Adapter<CurrencyViewHolder>() {
-
-    override fun getItemCount(): Int = currencyList.size
+class CurrencyAdapter : ListAdapter<Currency, CurrencyViewHolder>(DifUtilItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder =
 
@@ -23,12 +20,19 @@ class CurrencyAdapter(
         )
 
     override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
-        holder.bind(currencyList[position])
+        holder.bind(getItem(position))
+    }
+}
+
+class DifUtilItemCallback : DiffUtil.ItemCallback<Currency>() {
+
+    override fun areItemsTheSame(oldItem: Currency, newItem: Currency): Boolean {
+        return oldItem == newItem
     }
 
-    fun update(newListCurrency: List<Currency>) {
-        currencyList.clear()
-        currencyList.addAll(newListCurrency)
-        notifyDataSetChanged()
+    override fun areContentsTheSame(oldItem: Currency, newItem: Currency): Boolean {
+        return oldItem.id == newItem.id
+                && oldItem.name == newItem.name
+                && oldItem.symbol == newItem.symbol
     }
 }

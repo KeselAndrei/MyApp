@@ -8,7 +8,9 @@ import com.gmail.keseltms.myapp.R
 import com.gmail.keseltms.myapp.databinding.ActivityCurrencyBinding
 import com.gmail.keseltms.myapp.homework17.restCurrency.models.CurrencyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinApiExtension
 
+@KoinApiExtension
 class CurrencyActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCurrencyBinding
@@ -34,7 +36,7 @@ class CurrencyActivity : AppCompatActivity() {
         }
 
         viewModel.liveData.observe(this@CurrencyActivity, {
-            currencyAdapter.update(it)
+            currencyAdapter.submitList(it)
         })
     }
 
