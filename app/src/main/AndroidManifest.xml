@@ -7,14 +7,15 @@
 
     <application
         android:name=".MySuperApp"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         tools:ignore="AllowBackup,ExtraText,MissingClass">
-        <activity android:name=".homework17.CurrencyActivity"/>
+        <activity android:name=".homework18.AlarmClockActivity" />
+        <activity android:name=".homework17.CurrencyActivity" />
         <activity android:name=".homework16.MessengerActivity" />
         <activity android:name=".homework13.CandyStoreActivity" />
         <activity android:name=".homework12.HomeworkFragmentActivity" />
@@ -29,6 +30,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".homework18.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>
