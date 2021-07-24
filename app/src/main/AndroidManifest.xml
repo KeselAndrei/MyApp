@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         tools:ignore="AllowBackup,ExtraText,MissingClass">
+        <activity android:name=".homework19.WeatherActivity"></activity>
         <activity android:name=".homework18.AlarmClockActivity" />
         <activity android:name=".homework17.CurrencyActivity" />
         <activity android:name=".homework16.MessengerActivity" />
@@ -34,7 +35,9 @@
         <receiver
             android:name=".homework18.AlarmReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
+
+        <service android:name=".homework18.AlarmService" />
     </application>
 
 </manifest>

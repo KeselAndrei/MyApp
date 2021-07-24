@@ -11,6 +11,7 @@ import com.gmail.keseltms.myapp.homework13.CandyStoreActivity
 import com.gmail.keseltms.myapp.homework16.MessengerActivity
 import com.gmail.keseltms.myapp.homework17.CurrencyActivity
 import com.gmail.keseltms.myapp.homework18.AlarmClockActivity
+import com.gmail.keseltms.myapp.homework19.WeatherActivity
 import com.gmail.keseltms.myapp.homework6.Homework6Activity
 import com.gmail.keseltms.myapp.homework7.Homework7CheckUserActivity
 
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             btnHomework16.setOnClickListener(clickListener)
             btnHomework17.setOnClickListener(clickListener)
             btnHomework18.setOnClickListener(clickListener)
+            btnHomework19.setOnClickListener(clickListener)
             btnExit.setOnClickListener(clickListener)
         }
     }
@@ -58,6 +60,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_homework18 -> {
                 startActivity(Intent(this, AlarmClockActivity::class.java))
+            }
+            R.id.btn_homework19 -> {
+                startActivity(Intent(this, WeatherActivity::class.java))
             }
             R.id.btn_exit -> {
                 this.finish()
