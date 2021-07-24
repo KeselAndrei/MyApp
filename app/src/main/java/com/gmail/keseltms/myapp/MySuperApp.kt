@@ -1,6 +1,8 @@
 package com.gmail.keseltms.myapp
 
+import android.app.AlarmManager
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.gmail.keseltms.myapp.homework13.SharedPreferencesUtils
 import com.gmail.keseltms.myapp.homework13.SharedPrefsKeys
@@ -38,7 +40,7 @@ class MySuperApp : Application() {
 
         startKoin {
             androidContext(this@MySuperApp)
-            modules(listOf(viewModels, currencyRepository, currencyApi))
+            modules(listOf(viewModels, currencyRepository, currencyApi,systemModule))
         }
     }
 
@@ -52,5 +54,9 @@ class MySuperApp : Application() {
 
     private val currencyApi = module {
         single { CurrencyApi.get() }
+    }
+
+    private val systemModule = module {
+        factory { get<Context>().getSystemService(ALARM_SERVICE) as AlarmManager }
     }
 }

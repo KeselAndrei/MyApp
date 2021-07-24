@@ -88,6 +88,17 @@
             android:textSize="22sp" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_homework18"
+            style="@style/MyButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:backgroundTint="@color/purple_600"
+            android:text="@string/homework_18"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_exit"
             style="@style/MyButtonStyle"
             android:layout_width="match_parent"
