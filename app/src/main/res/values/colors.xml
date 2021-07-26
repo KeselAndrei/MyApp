@@ -18,4 +18,7 @@
     <color name="transparent">@android:color/transparent</color>
     <color name="grey_dark">#33000000</color>
     <color name="app_back_color">#ffd9e3</color>
+
+    <color name="my_purple_color">#A2CADC</color>
+
 </resources>

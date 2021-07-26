@@ -41,7 +41,7 @@ class InfoCandyFragment : Fragment() {
         Glide
             .with(binding!!.root)
             .load(
-                getURL(info),
+                getURL(info)
             )
             .into(binding!!.ivCandy)
 

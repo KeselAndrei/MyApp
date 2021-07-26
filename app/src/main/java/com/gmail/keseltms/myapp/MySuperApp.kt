@@ -11,6 +11,9 @@ import com.gmail.keseltms.myapp.homework16.MessageDatabase
 import com.gmail.keseltms.myapp.homework17.restCurrency.models.CurrencyViewModel
 import com.gmail.keseltms.myapp.homework17.restCurrency.restApi.CurrencyApi
 import com.gmail.keseltms.myapp.homework17.restCurrency.restApi.CurrencyRepository
+import com.gmail.keseltms.myapp.homework19.cloud.WeatherApi
+import com.gmail.keseltms.myapp.homework19.repository.ApiRepository
+import com.gmail.keseltms.myapp.homework19.viewModel.WeatherViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.component.KoinApiExtension
@@ -40,20 +43,23 @@ class MySuperApp : Application() {
 
         startKoin {
             androidContext(this@MySuperApp)
-            modules(listOf(viewModels, currencyRepository, currencyApi,systemModule))
+            modules(listOf(viewModels, repository, api,systemModule))
         }
     }
 
     private val viewModels = module {
         viewModel { CurrencyViewModel(get()) }
+        viewModel { WeatherViewModel(get()) }
     }
 
-    private val currencyRepository = module {
-        factory { CurrencyRepository(get()) }
+    private val repository = module {
+        factory { CurrencyRepository(get())}
+        factory { ApiRepository(get()) }
     }
 
-    private val currencyApi = module {
+    private val api = module {
         single { CurrencyApi.get() }
+        single { WeatherApi.get() }
     }
 
     private val systemModule = module {
