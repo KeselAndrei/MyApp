@@ -52,4 +52,6 @@
     <string name="confirm">СТАРТ</string>
 
     <string name="winter_speed">Ветер м/c</string>
+    <string name="widget_name">Погода</string>
+    <string name="widget_text">Tекст в погоде</string>
 </resources>

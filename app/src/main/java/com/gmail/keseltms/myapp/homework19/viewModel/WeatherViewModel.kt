@@ -14,6 +14,7 @@ import org.koin.core.component.KoinApiExtension
 class WeatherViewModel(
     private val apiRepository: ApiRepository
 ) : ViewModel() {
+
     val liveData: MutableLiveData<WeatherResult> = MutableLiveData()
 
     init {
@@ -21,11 +22,16 @@ class WeatherViewModel(
     }
 
     private fun getResultWeather() {
-        viewModelScope.launch(Dispatchers.Main) {
-            val result = withContext(Dispatchers.IO) {
-                apiRepository.getApiResult()
+        try {
+            viewModelScope.launch {
+                val result = withContext(Dispatchers.IO) {
+                    apiRepository.getApiResult()
+                }
+                liveData.postValue(result)
             }
-            liveData.postValue(result)
+
+        } catch (e: Exception) {
+            print(e)
         }
     }
 }

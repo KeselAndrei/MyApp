@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.gmail.keseltms.myapp.R
 import com.gmail.keseltms.myapp.databinding.ActivityAlarmClockBinding
@@ -18,6 +20,7 @@ class AlarmClockActivity : AppCompatActivity() {
     private var alarmDate: Calendar = Calendar.getInstance().apply { time = Date() }
     private val alarmManager: AlarmManager by inject()
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +28,11 @@ class AlarmClockActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.timePicker.setIs24HourView(true)
+
         binding.timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->
             alarmDate.set(Calendar.HOUR_OF_DAY, hourOfDay)
             alarmDate.set(Calendar.MINUTE, minute)
+
         }
 
         binding.confirm.setOnClickListener {
@@ -44,9 +49,10 @@ class AlarmClockActivity : AppCompatActivity() {
                     this,
                     0,
                     Intent(applicationContext, AlarmReceiver::class.java).apply {
-                        putExtra(AlarmReceiver.SOUND_KEY, true)
-                    }, PendingIntent.FLAG_UPDATE_CURRENT
-
+                        putExtra("TIME", binding.timePicker.hour)
+                        putExtra("MINUTE", binding.timePicker.minute)
+                    },
+                    PendingIntent.FLAG_UPDATE_CURRENT
                 )
             )
             Toast.makeText(this, getString(R.string.add_new_alarm), Toast.LENGTH_SHORT).show()

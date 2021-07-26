@@ -4,6 +4,7 @@
     package="com.gmail.keseltms.myapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MySuperApp"
@@ -14,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         tools:ignore="AllowBackup,ExtraText,MissingClass">
-        <activity android:name=".homework19.WeatherActivity"></activity>
+        <activity android:name=".homework19.WeatherActivity"/>
         <activity android:name=".homework18.AlarmClockActivity" />
         <activity android:name=".homework17.CurrencyActivity" />
         <activity android:name=".homework16.MessengerActivity" />
@@ -38,6 +39,31 @@
             android:exported="true" />
 
         <service android:name=".homework18.AlarmService" />
+
+        <service
+            android:name=".homework19.widget.UpdateWidgetService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+            <intent-filter>
+                <action android:name="PLANNER_APP_WIDGET_SYNC_ACTION" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".homework19.widget.WeatherWidget"
+            android:icon="@drawable/ic_nebko"
+            android:label="@string/widget_name">
+            <intent-filter>
+                <action
+                    android:name="android.appwidget.action.APPWIDGET_UPDATE">
+                </action>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provaider">
+            </meta-data>
+        </receiver>
     </application>
 
 </manifest>

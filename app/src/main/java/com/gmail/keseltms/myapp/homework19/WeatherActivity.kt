@@ -1,7 +1,7 @@
 package com.gmail.keseltms.myapp.homework19
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.gmail.keseltms.myapp.databinding.ActivityWeatherBinding
@@ -11,9 +11,9 @@ import org.koin.core.component.KoinApiExtension
 
 @KoinApiExtension
 class WeatherActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityWeatherBinding
     private val viewModel: WeatherViewModel by viewModel()
-    private  var id:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,21 +21,29 @@ class WeatherActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel.liveData.observe(this, {
-            binding.tvCityName.text = it.name
-            binding.tvTemp.text = it.temp.toInt().toString()
-            binding.tvDescription.text = it.description
-                .replace("[", "")
-                .replace("]", "")
-            id = it.iconId
+            update()
         })
+        binding.weatherHome.setOnClickListener {
+            update()
+        }
+    }
 
-        Log.e("KEK",id.let { "NULL" })
+    @SuppressLint("SetTextI18n")
+    private fun update() {
+        val resultWeather = viewModel.liveData.value
 
-        val URL = "https://openweathermap.org/img/wn/${1}@2x.png"
+        binding.tvCityName.text = resultWeather?.name
+        binding.tvTemp.text = "${resultWeather?.temp?.toInt()} °C"
+        binding.tvDescription.text = resultWeather?.description
+            ?.replace("[", "")
+            ?.replace("]", "")
+        val url = "https://openweathermap.org/img/wn/${resultWeather?.iconId}@2x.png"//тут падает
+            .replace("[", "")
+            .replace("]", "")
 
         Glide
             .with(binding.root)
-            .load(URL)
+            .load(url)
 //            .placeholder(R.drawable.ic_meteocast_sun_and_cloud)
             .into(binding.ivIcon)
     }
